@@ -89,9 +89,15 @@
 				                            <span class="lnr lnr-user"></span>
 				                        </a>
 				                        <ul class="dropdown-menu cart-list s-cate">
-				                            <li class="single-cart-list">
-				                                <a href="{% url 'account_login' %}">Login</a>
-				                            </li>
+											{% if request.user.is_authenticated %}
+												<li class="single-cart-list">
+													<a href="#">Profile</a>
+												</li>
+											{% else %}
+												<li class="single-cart-list">
+													<a href="{% url 'account_login' %}">Login</a>
+												</li>
+											{% endif %}
 				                        </ul>
 				                    </li>
 									<!-- account -->

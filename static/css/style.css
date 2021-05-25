@@ -111,8 +111,8 @@ html,body{height: 100%;}
         2. Top-area
 --------------------------------------*/
 nav.navbar.bootsnav {
-    background-color: transparent;
-    border-bottom: transparent;
+    background-color: #fff;
+    border-bottom: #fff;
 }
 .wrap-sticky nav.navbar.bootsnav.sticked {background-color: #fff;box-shadow: 0 2px 5px rgba(0,0,0,.2);}
 /*.navbar-brand*/

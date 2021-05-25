@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
 
     'django.contrib.sites',
     'allauth',
@@ -141,3 +142,20 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
     
 SITE_ID = 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+SESSION_COOKIE_AGE = 3600
+SESSION_SAVE_EVERY_REQUEST = True  
