@@ -1,7 +1,7 @@
 
 {% extends "layout.html" %}
+{% block content %}
 
-<!DOCTYPE html>
 <html>
   <head>
     <title>{% block head_title %}{% endblock %}</title>
@@ -11,16 +11,6 @@
   <body>
     {% block body %}
 
-    {% if messages %}
-    <div>
-      <strong>Messages:</strong>
-      <ul>
-        {% for message in messages %}
-        <li>{{message}}</li>
-        {% endfor %}
-      </ul>
-    </div>
-    {% endif %}
 
     <div>
       <strong>Menu:</strong>
@@ -34,10 +24,17 @@
         {% endif %}
       </ul>
     </div>
-    {% block content %}
-    {% endblock %}
+
+    <div class="login">
+      <div class="main-agileits">
+        <div class="form-w3agile">
+          {% block auth_content %}{% endblock %}
+        </div>
+      </div>
+    </div>
     {% endblock %}
     {% block extra_body %}
     {% endblock %}
   </body>
 </html>
+{% endblock content %}
