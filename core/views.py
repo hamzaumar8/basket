@@ -33,7 +33,7 @@ def detailPage(request, slug):
 
     return render(request, 'detail.html', context)
 
-
+@login_required
 def cartPage(request):
     try:
         order = models.Order.objects.get(user=request.user, ordered=False)
