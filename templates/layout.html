@@ -36,6 +36,7 @@
 		<!-- bootsnav -->
 		<link rel="stylesheet" href="{% static 'css/bootsnav.css' %}" >	
         
+		{% block extra_head %}{% endblock %}
         <!--style.css-->
         <link rel="stylesheet" href="{% static 'css/style.css' %}">
         
@@ -223,7 +224,7 @@
 								<!--/li-->
 								<li><a href="#">order history</a></li>
 								<!--/li-->
-								<li><a href="#">my cart</a></li>
+								<li><a href="{% url 'core:cart' %}">my cart</a></li>
 								<!--/li-->
 							</ul>
 							<!--/ul-->
@@ -325,6 +326,8 @@
         <!--Custom JS-->
         <script src="{% static 'js/custom.js' %}"></script>
         
+
+		{% block extra_body %}{% endblock %}
     </body>
 	
 </html>

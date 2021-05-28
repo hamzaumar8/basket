@@ -2,7 +2,7 @@
 {% load humanize %}
 {% load static %}
 
-{%block content%}
+
 {% block content %}
   <main>
     <div class="container">
@@ -17,6 +17,7 @@
             <th scope="col">Price</th>
             <th scope="col">Quantity</th>
             <th scope="col">Total Item Price</th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
@@ -37,6 +38,8 @@
             {% else %}
                 ${{ order_item.get_total_item_price }}
             {% endif %}
+            </td>
+            <td>
             <a style='color: red;' href="{% url 'core:remove-from-cart' order_item.item.slug %}">
                 <i class="fas fa-trash float-right"></i>
             </a>
@@ -81,5 +84,3 @@
 {% endblock content %}
 
 
-
-{%endblock content%}
