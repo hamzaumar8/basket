@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'crispy_forms',
 
     'core',
     'dashboard',
@@ -172,3 +173,7 @@ EMAIL_HOST = 'mail.onestepplabs.com'
 EMAIL_PORT = 587 #also tried with 465
 EMAIL_HOST_USER = 'server@onestepplabs.com'
 EMAIL_HOST_PASSWORD = 'P@ss467'
+
+
+if DEBUG:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

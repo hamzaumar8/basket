@@ -659,7 +659,6 @@
     <script src="{% static 'js/easy-responsive-tabs.js' %}"></script>
     <script src="{% static 'js/easing.js' %}"></script>
     <script src="{% static 'js/bootstrap.js' %}"></script>
-    <script src="{% static 'js/move-to-top.js' %}"></script>
     <script src="{% static 'js/jquery.flexslider.js' %}"></script>
     
     <script>
@@ -747,33 +746,8 @@
         });
     </script>
     <!-- //dropdown nav -->
-<script>
-    jQuery(document).ready(function($) {
-        $(".scroll").click(function(event) {
-            event.preventDefault();
-            $('html,body').animate({
-                scrollTop: $(this.hash).offset().top
-            }, 900);
-        });
-    });
-</script>
-<script>
-    $(document).ready(function() {
-        /*
-                                var defaults = {
-                                      containerID: 'toTop', // fading element id
-                                    containerHoverID: 'toTopHover', // fading element hover id
-                                    scrollSpeed: 1200,
-                                    easingType: 'linear' 
-                                 };
-                                */
 
-        $().UItoTop({
-            easingType: 'easeOutQuart'
-        });
 
-    });
-</script>
 <!--// end-smoth-scrolling -->
 <!-- js file -->
 {% endblock %}

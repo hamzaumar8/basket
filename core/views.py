@@ -49,7 +49,9 @@ def cartPage(request):
 
 
 
+def shopPage(request):
 
+    return render(request, 'shop.html')
 
 
 
