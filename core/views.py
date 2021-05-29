@@ -14,8 +14,10 @@ from . import models
 
 def indexPage(request):
     new_obj = models.Item.objects.filter(new=True)
+    featured_obj = models.Item.objects.filter(featured=True)
     context = {
         'new_obj' : new_obj,
+        'featured_obj': featured_obj,
     }
     return render(request, 'index.html', context)
 
