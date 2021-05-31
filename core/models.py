@@ -6,20 +6,10 @@ from django.shortcuts import reverse
 from autoslug.settings import slugify as default_slugify
 from django_countries.fields import CountryField
 from autoslug import AutoSlugField
+from phonenumber_field.modelfields import PhoneNumberField
 # Create your models here.
 
 
-CATEGORY_CHOICES = (
-    ('S', 'Shirt'),
-    ('SW', 'Sport wear'),
-    ('OW', 'Outwear')
-)
-
-LABEL_CHOICES = (
-    ('P', 'primary'),
-    ('S', 'secondary'),
-    ('D', 'danger')
-)
 
 ADDRESS_CHOICES = (
     ('B', 'Billing'),
@@ -34,8 +24,7 @@ def custom_slugify(value):
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     image = models.ImageField(default='sample.jpg', upload_to='profile_pics')
-    department = models.CharField(max_length=200, null=True, blank=True)
-    allow_access = models.BooleanField(default=True)
+    phone_number = PhoneNumberField()
 
     def __str__(self):
         return self.user.email

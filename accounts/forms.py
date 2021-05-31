@@ -21,18 +21,15 @@ class CustomSignupForm(SignupForm):
         }),
     )
 
-    country = CountryField(
-        blank_label='(select country)').formfield(
-            required=False,
-            widget=CountrySelectWidget(
-                attrs={
-                    'class': 'custom-select d-block w-100',
-                }
-            )
-        )
-
-
-
+    # country = CountryField(
+    #     blank_label='(select country)').formfield(
+    #         required=False,
+    #         widget=CountrySelectWidget(
+    #             attrs={
+    #                 'class': 'custom-select d-block w-100',
+    #             }
+    #         )
+    #     )
 
     phone_number = PhoneNumberField(
         widget=PhoneNumberPrefixWidget(
@@ -54,7 +51,7 @@ class CustomSignupForm(SignupForm):
             user.first_name = full_name
 
         user_profile = user.profile
-        # user_profile.phone_number = cleaned_data['phone_number']
+        user_profile.phone_number = cleaned_data['phone_number']
         user.save() 
         user_profile.save()
         return user
