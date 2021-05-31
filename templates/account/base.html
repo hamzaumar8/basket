@@ -1,19 +1,25 @@
 
 {% extends "layout.html" %}
+
 {% block content %}
 <style>
   p.invalid-feedback{
     color: #d90024;
     margin: 2px 0;
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-weight: 700;
   }
 
-  input.form-control:focus, input.form-control:hover {
+  .w-50{
+    display: inline-block !important;
+    
+  }
+  .form-control:focus,
+  .form-control:hover {
     border-color:#e99c2e;
   }
 
-  input.form-control{
+  .form-control{
     padding: 1rem;
     letter-spacing: .05em;
     display: block;
@@ -33,12 +39,9 @@
     display: inline-block;
   }
 </style>
-<html>
-  <head>
+
     <title>{% block head_title %}{% endblock %}</title>
-    
-  </head>
-  <body>
+
     {% block body %}
 
 
@@ -63,7 +66,7 @@
       </div>
     </div>
     {% endblock %}
-    
-  </body>
-</html>
+
 {% endblock content %}
+
+{% block newsletter %}{% endblock newsletter %}
