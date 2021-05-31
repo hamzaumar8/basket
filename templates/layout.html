@@ -126,8 +126,10 @@
 				            <!-- Collect the nav links, forms, and other content for toggling -->
 				            <div class="collapse navbar-collapse menu-ui-design" id="navbar-menu">
 				                <ul class="nav navbar-nav navbar-center" data-in="fadeInDown" data-out="fadeOutUp">
-				                    <li class="active"><a href="{% url 'core:index' %}">home</a></li>
+				                    <li class=""><a href="{% url 'core:index' %}">home</a></li>
+									{% block shop_nav%}
 				                    <li class=""><a href="{% url 'core:shop' %}">shop</a></li>
+									{% endblock shop_nav%}
 				                    <li class=""><a href="">features</a></li>
 				                    <li class=""><a href="">blog</a></li>
 				                    <li class=""><a href="">contact</a></li>

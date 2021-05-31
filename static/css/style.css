@@ -822,13 +822,14 @@ span.feature-review {margin-left: 10px;}
 /*-------------------------------------
         10. News-letter
 --------------------------------------*/
-.newsletter{padding:120px 0 75px;}
+.newsletter{padding:120px 0 75px;background-color: #353535;}
 
 .hm-footer-widget{margin-bottom: 30px;}
 .hm-foot-title h4 {
     font-size: 18px;
     font-weight: 700;
     margin-bottom: 45px;
+    color: #fff;
 }
 .hm-foot-menu ul li a {
     color: #a09e9c;

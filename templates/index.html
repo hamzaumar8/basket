@@ -336,7 +336,7 @@
 				{% for featured in featured_obj %}
 				<div class="col-sm-3">
 					<div class="single-feature">
-						<img src="{% static 'images/features/f1.jpg' %}" alt="feature image">
+						<img src="{{ featured.imageURL }}" alt="feature image">
 						<div class="single-feature-txt text-center">
 							<p>
 								<i class="fa fa-star"></i>
@@ -346,7 +346,7 @@
 								<span class="spacial-feature-icon"><i class="fa fa-star"></i></span>
 								<span class="feature-review">(45 review)</span>
 							</p>
-							<h3><a href="#">designed sofa</a></h3>
+							<h3><a href="{{ featured.get_absolute_url }}">{{ featured.title }}</a></h3>
 							<h5>$160.00</h5>
 						</div>
 					</div>

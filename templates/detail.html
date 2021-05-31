@@ -21,7 +21,7 @@
     <div class="container">
         <div class="inner-sec-shop pt-lg-4 pt-3">
             <div class="row">
-                    <div class="col-lg-4 single-right-left ">
+                    <div class="col-lg-5 single-right-left ">
                             <div class="grid images_3_of_2">
                                 <div class="flexslider1">
                                     <ul class="slides">
@@ -39,7 +39,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-8 single-right-left simpleCart_shelfItem">
+                        <div class="col-lg-7 single-right-left simpleCart_shelfItem">
                             <h3>{{ object.title }}</h3>
                             <p><span class="item_price">$ {{ object.price|floatformat:2|intcomma }}</span>
                                 <del>$1,199</del>
@@ -64,51 +64,7 @@
                                         </select>
                                 </div>
                             </div>
-                            <div class="occasion-cart">
-                                    <div class="googles single-item singlepage">
-                                            <form action="#" method="post">
-                                                <input type="hidden" name="cmd" value="_cart">
-                                                <input type="hidden" name="add" value="1">
-                                                <input type="hidden" name="googles_item" value="Farenheit">
-                                                <input type="hidden" name="amount" value="575.00">
-                                                <button type="submit" class="googles-cart pgoogles-cart">
-                                                    Add to Cart
-                                                </button>
-                                                <a href="{{ object.get_add_to_cart_url }}" class="btn btn-warning">Add to cart </a>
-                                            </form>
-
-                                        </div>
-                            </div>
-                            <ul class="footer-social text-left mt-lg-4 mt-3">
-                                    <li>Share On : </li>
-                                    <li class="mx-2">
-                                        <a href="#">
-                                            <span class="fab fa-facebook-f"></span>
-                                        </a>
-                                    </li>
-                                    <li class="mx-2">
-                                        <a href="#">
-                                            <span class="fab fa-twitter"></span>
-                                        </a>
-                                    </li>
-                                    <li class="mx-2">
-                                        <a href="#">
-                                            <span class="fab fa-google-plus-g"></span>
-                                        </a>
-                                    </li>
-                                    <li class="mx-2">
-                                        <a href="#">
-                                            <span class="fab fa-linkedin-in"></span>
-                                        </a>
-                                    </li>
-                                    <li class="mx-2">
-                                        <a href="#">
-                                            <span class="fas fa-rss"></span>
-                                        </a>
-                                    </li>
-                                    
-                                </ul>
-    
+                          
                         </div>
                         <div class="clearfix"> </div>
                         <!--/tabs-->
