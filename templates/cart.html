@@ -27,9 +27,9 @@
                     <img src="{{ order_item.item.imageURL }}"  style="max-width:11rem">
                 </td>
                 <td>
-                    <a href="{{ order_item.item.get_absolute_url }}">{{ order_item.item.title }}</a>
+                    <strong><a href="{{ order_item.item.get_absolute_url }}">{{ order_item.item.title }}</a></strong>
                 </td>
-                <td>{{ order_item.item.price }}</td>
+                <td>${{ order_item.item.price|floatformat:2|intcomma }}</td>
                 <td>
                     <a href="{% url 'core:add-to-cart' order_item.item.slug %}" class="btn btn-primary btn-sm" id="addone" aid="28"><i class="fa fa-plus"></i></a>
                     <span class="margin:auto 20px;">{{ order_item.quantity }}</span>
@@ -37,10 +37,10 @@
                 </td>
                 <td>
                     {% if order_item.item.discount_price %}
-                        ${{ order_item.get_total_discount_item_price }}
-                        <span class="badge badge-primary">Saving ${{ order_item.get_amount_saved }}</span>
+                        ${{ order_item.get_total_discount_item_price|floatformat:2|intcomma }}
+                        <span class="badge badge-primary">Saving ${{ order_item.get_amount_saved|floatformat:2|intcomma }}</span>
                     {% else %}
-                        ${{ order_item.get_total_item_price }}
+                        ${{ order_item.get_total_item_price|floatformat:2|intcomma }}
                     {% endif %}
                 </td>
                 <td>

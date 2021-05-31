@@ -53,6 +53,35 @@ body{
     margin-bottom: 20px;
 }
 
+.btn{
+    display: block;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 8px 30px;
+    border-radius: 30px;
+    outline: none;
+    display: inline-block;
+    -webkit-transition: all 200ms ease;
+    -moz-transition: all 200ms ease;
+    -ms-transition: all 200ms ease;
+    -o-transition: all 200ms ease;
+    transition: all 200ms ease;
+    box-shadow: 0 2px 8px 0 rgb(0 0 0 / 15%);
+}
+
+.btn-sm{
+    font-size: 14px;
+    padding: 6px 20px
+}
+a,
+a:hover,
+a:active,
+a:focus {
+	display:inline-block;
+	text-decoration:none;
+	color: #616060;
+}
+
 h1,h2,h3,h4,h5,h6 { 
 	margin: 0;
 	color:#5f5b57;

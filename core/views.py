@@ -90,8 +90,8 @@ def add_to_cart(request, slug):
 
 @login_required
 def remove_from_cart(request, slug):
-    item = get_object_or_404(Item, slug=slug)
-    order_qs = Order.objects.filter(
+    item = get_object_or_404(models.Item, slug=slug)
+    order_qs = models.Order.objects.filter(
         user=request.user,
         ordered=False
     )
@@ -99,7 +99,7 @@ def remove_from_cart(request, slug):
         order = order_qs[0]
         # check if the order item is in the order
         if order.items.filter(item__slug=item.slug).exists():
-            order_item = OrderItem.objects.filter(
+            order_item = models.OrderItem.objects.filter(
                 item=item,
                 user=request.user,
                 ordered=False
@@ -118,8 +118,8 @@ def remove_from_cart(request, slug):
 
 @login_required
 def remove_single_item_from_cart(request, slug):
-    item = get_object_or_404(Item, slug=slug)
-    order_qs = Order.objects.filter(
+    item = get_object_or_404(models.Item, slug=slug)
+    order_qs = models.Order.objects.filter(
         user=request.user,
         ordered=False
     )
@@ -127,7 +127,7 @@ def remove_single_item_from_cart(request, slug):
         order = order_qs[0]
         # check if the order item is in the order
         if order.items.filter(item__slug=item.slug).exists():
-            order_item = OrderItem.objects.filter(
+            order_item = models.OrderItem.objects.filter(
                 item=item,
                 user=request.user,
                 ordered=False
