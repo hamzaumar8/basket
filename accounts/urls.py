@@ -1,11 +1,10 @@
 from django.urls import path, include
-# from . import views
+from . import views
 
 app_name = 'accounts'
 
 
 urlpatterns = [
-    # path("dashboard/admin/entity/email/<int:id>/resend/", admin.ResendInviteEmail, name="resend-entity-email"),
-    # path("", views.indexPage, name="index"),
+    path("myaccount/", views.profilePage, name="profile"),
     
 ]
