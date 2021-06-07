@@ -330,7 +330,7 @@ ul.cart-list > li.total {
     z-index: 1;
     background: #f8f9fd;
 }
-.header-area{position: absolute;top:0;left:0;width: 100%;z-index: 99;}
+.header-area{position: static;top:0;left:0;width: 100%;z-index: 99;}
 .single-slide-item{
     position: relative;
     background-size: cover;
