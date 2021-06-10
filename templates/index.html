@@ -1,11 +1,9 @@
 {% extends 'layout.html' %}
 {% load humanize %}
 {% load static %}
+{% load cart_template_tags %}
+
 {% block navigation %}
-
-
-
-
 <header id="home" class="welcome-hero">
 	<!-- top-area Start -->
 	<div class="top-area">
@@ -52,7 +50,7 @@
 							<li class="">
 								<a href="{% url 'core:cart' %}">
 									<span class="lnr lnr-cart"></span>
-									<span class="badge badge-bg-1">2</span>
+									<span class="badge badge-bg-1">{{ request.user|cart_item_count }}</span>
 								</a>
 							</li><!--/.dropdown-->
 						</ul>
@@ -73,6 +71,7 @@
 					<div class="collapse navbar-collapse menu-ui-design" id="navbar-menu">
 						<ul class="nav navbar-nav navbar-center" data-in="fadeInDown" data-out="fadeOutUp">
 							<li class=" scroll active"><a href="#home">home</a></li>
+                            <li class=""><a href="{% url 'core:shop' %}">shop</a></li>
 							<li class="scroll"><a href="#new-arrivals">new arrival</a></li>
 							<li class="scroll"><a href="#feature">features</a></li>
 							<li class="scroll"><a href="#newsletter">contact</a></li>

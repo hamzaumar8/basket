@@ -1,5 +1,5 @@
 <!--welcome-hero start -->
-
+{% load cart_template_tags %}
 <header id="home" class="welcome-hero">
 
     <!-- top-area Start -->
@@ -9,7 +9,6 @@
             <nav class="navbar navbar-default bootsnav  navbar-sticky navbar-scrollspy " data-minus-value-desktop="70"
                 data-minus-value-mobile="55" data-speed="1000"
                 style="background-color: #fff;box-shadow: 0 2px 5px rgb(0 0 0 / 20%);">
-
                 <!-- Start Top Search -->
                 <div class="top-search">
                     <div class="container">
@@ -50,7 +49,7 @@
                             <li class="">
                                 <a href="{% url 'core:cart' %}">
                                     <span class="lnr lnr-cart"></span>
-                                    <span class="badge badge-bg-1">2</span>
+                                    <span class="badge badge-bg-1">{{ request.user|cart_item_count }}</span>
                                 </a>
                             </li>
                             <!--/.dropdown-->
@@ -96,4 +95,4 @@
 </header>
 <!--/.welcome-hero-->
 <!--welcome-hero end -->
-<div style="height: 180px;"></div>
+<div style="height: 10px;"></div>

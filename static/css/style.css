@@ -683,7 +683,6 @@ p.arrival-review span {margin-right: 15px;}
 --------------------------------------*/
 #sofa-collection {
     position: relative;
-    z-index: -1;
 }
 .sofa-collection{
     position: relative;
@@ -703,7 +702,7 @@ p.arrival-review span {margin-right: 15px;}
     left: 0;
     height: 100%;
     width: 33.4%;
-    background: rgba(51,59,62,.95);
+    background: rgb(233 156 46 / 43%);
 }
 .sofa-collection:after {
     background: rgba(106,119,129,.3);
