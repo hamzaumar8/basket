@@ -2,90 +2,220 @@
 {% load humanize %}
 {% load static %}
 {% block extra_head %}
-    <link rel="stylesheet" href="{% static 'css/table.css' %}">
+<link rel="stylesheet" href="{% static 'css/table.css' %}">
 {% endblock %}
 {% block content %}
-<main>
+
+<style>
+    aside.right-content .summary.forward {
+        border: 1px solid #faa634;
+        background-color: #fff2de;
+        width: 100%;
+        padding: 20px;
+        margin-bottom: 20px;
+        -webkit-box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%);
+        -moz-box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%);
+        box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%);
+    }
+
+    aside.right-content .summary .totals {
+        margin-bottom: 15px;
+    }
+
+    aside.right-content .summary .totals h5 {
+        margin-bottom: 10px;
+        font-size: 14px;
+    }
+
+
+    aside.right-content .summary .totals .item {
+        line-height: 18px;
+        display: flex;
+    justify-content: space-between;
+    }
+
+
+    aside.right-content .summary .totals .item label {
+        font-size: 13px;
+        float: left;
+        text-align: left;
+        width: -moz-min-content;
+        width: -webkit-min-content;
+        width: min-content;
+        max-width: 155px;
+        min-width: 130px;
+        font-weight: unset;
+        color: #2e2e2e;
+    }
+
+    aside.right-content .summary .totals .item .value {
+        font-size: 13px;
+        float: right;
+        text-align: right;
+        font-weight: 700;
+        color: #4d4d4d;
+        
+    }
+
+    aside.right-content .summary .totals .item.total {
+        margin: 5px 0;
+        font-size: 18px;
+        padding-top: 10px;
+        border-top: 1px solid #ccc;
+        display: block;
+        line-height: 18px;
+    }
+
+    .summary-form .btn {
+        width: 100%;
+        margin-top: 25px;
+    }
+
+    main {
+        padding: 80px 0;
+    }
+</style>
+<main class="pt-5">
     <div class="container">
-        <h1 class="cart_title">Order Summary</h1>
-        <table class="bordered centered responsive-table">
-            <thead>
-                <tr>
-                    <th></th>
-                    <th></th>
-                    <th>Item</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
-                    <th>Sub Total</th>
-                </tr>
-            </thead>
-        <tbody>
-            {% for order_item in object.items.all %}
-            <tr>
-                <td>{{ forloop.counter }}</td>
-                <td>
-                    <img src="{{ order_item.item.imageURL }}"  style="max-width:11rem">
-                </td>
-                <td>
-                    <strong><a href="{{ order_item.item.get_absolute_url }}">{{ order_item.item.title }}</a></strong>
-                </td>
-                <td>${{ order_item.item.price|floatformat:2|intcomma }}</td>
-                <td>
-                    <a href="{% url 'core:add-to-cart' order_item.item.slug %}" class="btn btn-primary btn-sm" id="addone" aid="28"><i class="fa fa-plus"></i></a>
-                    <span class="margin:auto 20px;">{{ order_item.quantity }}</span>
-                    <a href="{% url 'core:remove-single-item-from-cart' order_item.item.slug %}" class="btn btn-danger btn-sm"><i class="fa fa-minus"></i></a>
-                </td>
-                <td>
-                    {% if order_item.item.discount_price %}
-                        ${{ order_item.get_total_discount_item_price|floatformat:2|intcomma }}
-                        <span class="badge badge-primary">Saving ${{ order_item.get_amount_saved|floatformat:2|intcomma }}</span>
-                    {% else %}
-                        ${{ order_item.get_total_item_price|floatformat:2|intcomma }}
-                    {% endif %}
-                </td>
-                <td>
-                    <a href="{% url 'core:remove-from-cart' order_item.item.slug %}" class="btn btn-danger btn-sm" id="delete" did="28"><i class="fa fa-trash"></i></a>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-
-    <div class="table">
-        
-        {% for order_item in object.items.all %}
-    
-        {% empty %}
-        <tr>
-            <td colspan='5'>Your cart is empty</td>
-        </tr>
-        <tr>
-            <td colspan="5">
-            <a class='btn btn-primary float-right' href='/'>Continue shopping</a>
+        <h1 class="cart_title">Order Summary <td><a class='btn btn-primary float-right' href='/'>Continue shopping</a>
             </td>
-        </tr>
-        {% endfor %}
-        
-        {% if object.get_total %}
-        
-            <td colspan="4"><b>Order Total</b></td>
-            <td><b>${{ object.get_total }}</b></td>
-        </tr>
-        <tr>
-            <td colspan="5">
-            <a class='btn btn-warning float-right ml-2' href='/checkout/'>Proceed to checkout</a>
-            <a class='btn btn-primary float-right' href='/'>Continue shopping</a>
-            </td>
-        </tr>
-        {% endif %}
-        </tbody>
-    </div>
+        </h1>
+        <div class="row">
+            <div class="col-md-9">
+                <table class="bordered centered responsive-table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th>Item</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Sub Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for order_item in object.items.all %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>
+                                <img src="{{ order_item.item.imageURL }}" style="max-width:11rem">
+                            </td>
+                            <td>
+                                <strong><a
+                                        href="{{ order_item.item.get_absolute_url }}">{{ order_item.item.title }}</a></strong>
+                            </td>
+                            <td>${{ order_item.item.price|floatformat:2|intcomma }}</td>
+                            <td>
+                                <a href="{% url 'core:add-to-cart' order_item.item.slug %}"
+                                    class="btn btn-primary btn-sm" id="addone" aid="28"><i class="fa fa-plus"></i></a>
+                                <span class="margin:auto 20px;">{{ order_item.quantity }}</span>
+                                <a href="{% url 'core:remove-single-item-from-cart' order_item.item.slug %}"
+                                    class="btn btn-danger btn-sm"><i class="fa fa-minus"></i></a>
+                            </td>
+                            <td>
+                                {% if order_item.item.discount_price %}
+                                ${{ order_item.get_total_discount_item_price|floatformat:2|intcomma }}
+                                <!-- <span class="badge badge-primary">Saving  ${{ order_item.get_amount_saved|floatformat:2|intcomma }}</span> -->
+                                {% else %}
+                                ${{ order_item.get_total_item_price|floatformat:2|intcomma }}
+                                {% endif %}
+                            </td>
+                            <td>
+                                <a href="{% url 'core:remove-from-cart' order_item.item.slug %}"
+                                    class="btn btn-danger btn-sm" id="delete" did="28"><i class="fa fa-trash"></i></a>
+                            </td>
+                        </tr>
+
+                       
+                        {% endfor %}
+
+                    </tbody>
+                </table>
+
+
+            </div>
+            <aside class="col-md-3 right-content">
+
+                <!-- Order Totals -->
+                <div class="summary forward">
+                    <div class="totals">
+                        <h5>order Details</h5>
+                        <div class="item">
+                            <label id="pricing-volume-point-title">Total quantity:</label>
+                            <div class="value" data-format="n2" id="pricing-volume-point">{{ object.get_total_quantity }}</div>
+                        </div>
+                    </div>
+                    <div class="totals">
+                        <div id="totals-section">
+                            <!-- <div class="item">
+                                <label id="cart-retail-total-title">Cart Retail Total:</label>
+                                <div class="value" id="cart-retail-total">
+                                    <bdo dir="ltr">
+                                        ¢ <span data-format="n2" id="pricing-subtotal">108.62</span>
+                                    </bdo>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <label id="discount-title">
+                                    Discount:
+                                    <bdo dir="ltr">
+                                        <span id="pricing-discount">(25%):</span>
+                                    </bdo>
+                                </label>
+                                <div id="discount" class="value">
+                                    <bdo dir="ltr">
+                                        ¢ - <span data-format="n2" id="pricing-discount-amount">25.43</span>
+                                    </bdo>
+                                </div>
+                            </div>
+                            <div id="handling-title" class="item">
+                                <label>Shipping &amp; Handling:</label>
+                                <div class="value" id="handling">
+                                    <bdo dir="ltr">
+                                        ¢ <span data-format="n2" id="pricing-freight">7.52</span>
+                                    </bdo>
+                                </div>
+                            </div> -->
+                            <!-- <div class="item">
+                                <label id="sales-tax-title">Sales Tax:</label>
+                                <div class="value" id="sales-tax">
+                                    <bdo dir="ltr">
+                                        ¢ <span data-format="n2" id="pricing-tax">3.62</span>
+                                    </bdo>
+                                </div>
+                            </div> -->
+
+                            <div class="item total">
+                                <label id="grand-total-title">
+                                    <strong>
+                                        sub Total: 
+                                    </strong>
+                                </label>
+                                <div class="value" id="grand-total">
+                                    <bdo dir="ltr">
+                                        ¢ <span data-format="n2"
+                                            id="pricing-amount-due">{{ object.get_total|floatformat:2|intcomma }}</span>
+                                    </bdo>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div id="summary-form" class="summary-form" name="summary-form">
+                        <a class="btn btn-warning">Proceed to Checkout</a>
+                    </div>
+                </div>
+
+
+            </aside>
+
+
+        </div>
 
     </div>
-
     </div>
-  </main>
+</main>
 
 {% endblock content %}
-
-

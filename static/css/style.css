@@ -52,8 +52,24 @@ body{
     font-weight: 600;
     margin-bottom: 20px;
 }
-
 .btn{
+    
+    line-height: 40px;
+    color: #5f5b57;
+    padding: 5px 20px;
+    background: transparent;
+    border: 1px solid #5f5b57;
+    font-size: 14px;
+    -webkit-transition: 0.3s linear;
+    -moz-transition: 0.3s linear;
+    -ms-transition: 0.3s linear;
+    -o-transition: 0.3s linear;
+    transition: 0.3s linear;
+    text-transform: capitalize;
+    border-radius: 0;
+}
+
+/* .btn{
     display: block;
     font-size: 18px;
     font-weight: 500;
@@ -67,12 +83,14 @@ body{
     -o-transition: all 200ms ease;
     transition: all 200ms ease;
     box-shadow: 0 2px 8px 0 rgb(0 0 0 / 15%);
-}
+} */
 
 .btn-sm{
     font-size: 14px;
-    padding: 6px 20px
+    padding: 3px 10px;
+    line-height: 20px;
 }
+
 a,
 a:hover,
 a:active,

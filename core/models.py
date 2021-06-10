@@ -145,6 +145,12 @@ class Order(models.Model):
         # if self.coupon:
         #     total -= self.coupon.amount
         return total
+        
+    def get_total_quantity(self):
+        total = 0
+        for order_item in self.items.all():
+            total += order_item.quantity
+        return total
 
 
 class Address(models.Model):
