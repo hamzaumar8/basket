@@ -255,6 +255,11 @@ ul.dropdown-menu.cart-list {
     height: 232px;
     overflow-y: scroll;
     border-radius: 3px;
+    z-index: 99;
+}
+
+.owl-carousel{
+    z-index: unset;
 }
 ul.cart-list > li img {
     width: 50px;
