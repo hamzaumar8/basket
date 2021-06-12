@@ -514,6 +514,10 @@ ul.cart-list > li.total {
 .single-populer-product-img.mt40{margin-top: 40px;}
 .single-inner-populer-products{margin-top: 40px;padding: 0 45px 0 30px;text-align: left;}
 
+.single-populer-product-img img,
+.single-inner-populer-product-img img{
+    height: 16rem;
+}
 .single-populer-products h2 a {
     display: inline-block;
     font-size: 18px;
