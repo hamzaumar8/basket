@@ -13,8 +13,8 @@ from . import models
 
 
 def indexPage(request):
-    new_obj = models.Item.objects.filter(new=True)
-    featured_obj = models.Item.objects.filter(featured=True)
+    new_obj = models.Item.objects.filter(new=True)[:12]
+    featured_obj = models.Item.objects.filter(featured=True)[:12]
     context = {
         'new_obj' : new_obj,
         'featured_obj': featured_obj,
@@ -53,7 +53,11 @@ def cartPage(request):
 
 def shopPage(request):
 
-    return render(request, 'shop.html')
+    obj = models.Item.objects.all()
+    context = {
+        'objects': obj,
+    }
+    return render(request, 'shop.html', context)
 
 
 
