@@ -1,0 +1,84 @@
+{% extends 'layout.html' %}
+{% load humanize %}
+{% load static %}
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'css/table.css' %}">
+{% endblock %}
+{% block content %}
+
+<style>
+
+</style>
+<main class="pt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 left-content">
+                <div class="tab">
+                    <h2>My recent orders</h2>
+                    <table class="bordered centered responsive-table">
+                        <thead>
+                            <tr>
+                                <th>Order date</th>
+                                <th>Order Number</th>
+                                <th>Item</th>
+                                <th>Status</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for order_item in object.items.all %}
+                            <tr>
+                                <td>{{ forloop.counter }}</td>
+                                <td>
+                                    <img src="{{ order_item.item.imageURL }}" style="max-width:11rem">
+                                </td>
+                                <td>
+                                    <strong><a
+                                            href="{{ order_item.item.get_absolute_url }}">{{ order_item.item.title }}</a></strong>
+                                </td>
+                                <td>${{ order_item.item.price|floatformat:2|intcomma }}</td>
+                                <td>
+                                    <a href="{% url 'core:add-to-cart' order_item.item.slug %}"
+                                        class="btn btn-primary btn-sm" id="addone" aid="28"><i
+                                            class="fa fa-plus"></i></a>
+                                    <span class="margin:auto 20px;">{{ order_item.quantity }}</span>
+                                    <a href="{% url 'core:remove-single-item-from-cart' order_item.item.slug %}"
+                                        class="btn btn-danger btn-sm"><i class="fa fa-minus"></i></a>
+                                </td>
+                                <td>
+                                    {% if order_item.item.discount_price %}
+                                    ${{ order_item.get_total_discount_item_price|floatformat:2|intcomma }}
+                                    <!-- <span class="badge badge-primary">Saving  ${{ order_item.get_amount_saved|floatformat:2|intcomma }}</span> -->
+                                    {% else %}
+                                    ${{ order_item.get_total_item_price|floatformat:2|intcomma }}
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    <a href="{% url 'core:remove-from-cart' order_item.item.slug %}"
+                                        class="btn btn-danger btn-sm" id="delete" did="28"><i
+                                            class="fa fa-trash"></i></a>
+                                </td>
+                            </tr>
+
+
+                            {% endfor %}
+
+                        </tbody>
+                    </table>
+
+
+                </div>
+            </div>
+            <aside class="col-md-4 right-content">
+
+            
+            </aside>
+
+
+        </div>
+
+    </div>
+    </div>
+</main>
+
+{% endblock content %}

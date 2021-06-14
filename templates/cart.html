@@ -6,90 +6,13 @@
 {% endblock %}
 {% block content %}
 
-<style>
-    td strong a {
-        color: #0080ff;
-    }
-    aside.right-content .summary.forward {
-        border: 1px solid #faa634;
-        background-color: #fff2de;
-        width: 100%;
-        padding: 20px;
-        margin-bottom: 20px;
-        -webkit-box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%);
-        -moz-box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%);
-        box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%);
-    }
-
-    aside.right-content .summary .totals {
-        margin-bottom: 15px;
-    }
-
-    aside.right-content .summary .totals h5 {
-        margin-bottom: 10px;
-        font-size: 14px;
-    }
-
-
-    aside.right-content .summary .totals .item {
-        line-height: 18px;
-        display: flex;
-    justify-content: space-between;
-    }
-
-
-    aside.right-content .summary .totals .item label {
-        font-size: 13px;
-        float: left;
-        text-align: left;
-        width: -moz-min-content;
-        width: -webkit-min-content;
-        width: min-content;
-        max-width: 155px;
-        min-width: 130px;
-        font-weight: unset;
-        color: #2e2e2e;
-    }
-
-    aside.right-content .summary .totals .item .value {
-        font-size: 13px;
-        float: right;
-        text-align: right;
-        font-weight: 700;
-        color: #4d4d4d;
-        
-    }
-
-    aside.right-content .summary .totals .item.total {
-        margin: 5px 0;
-        font-size: 18px;
-        padding-top: 10px;
-        border-top: 1px solid #ccc;
-        display: block;
-        line-height: 18px;
-    }
-
-    .summary-form .btn {
-        width: 100%;
-        margin-top: 25px;
-    }
-
-    main {
-        padding: 40px 0 80px;
-    }
-
-    .col-md-9,
-    .right-content{
-        margin: 20px 0 40px;
-    }
-</style>
 <main class="pt-5">
     <div class="container">
         <h1 class="cart_title">Order Summary <td><a class='btn btn-primary float-right' href='/'>Continue shopping</a>
             </td>
         </h1>
         <div class="row">
-            <div class="col-md-9">
+            <div class="col-md-9 left-content">
                 <table class="bordered centered responsive-table">
                     <thead>
                         <tr>
@@ -134,7 +57,7 @@
                             </td>
                         </tr>
 
-                       
+
                         {% endfor %}
 
                     </tbody>
@@ -150,7 +73,8 @@
                         <h5>order Details</h5>
                         <div class="item">
                             <label id="pricing-volume-point-title">Total quantity:</label>
-                            <div class="value" data-format="n2" id="pricing-volume-point">{{ object.get_total_quantity }}</div>
+                            <div class="value" data-format="n2" id="pricing-volume-point">
+                                {{ object.get_total_quantity }}</div>
                         </div>
                     </div>
                     <div class="totals">
@@ -196,7 +120,7 @@
                             <div class="item total">
                                 <label id="grand-total-title">
                                     <strong>
-                                        sub Total: 
+                                        sub Total:
                                     </strong>
                                 </label>
                                 <div class="value" id="grand-total">
