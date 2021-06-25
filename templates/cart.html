@@ -44,12 +44,7 @@
                                     class="btn btn-danger btn-sm"><i class="fa fa-minus"></i></a>
                             </td>
                             <td>
-                                {% if order_item.item.discount_price %}
-                                ${{ order_item.get_total_discount_item_price|floatformat:2|intcomma }}
-                                <!-- <span class="badge badge-primary">Saving  ${{ order_item.get_amount_saved|floatformat:2|intcomma }}</span> -->
-                                {% else %}
                                 ${{ order_item.get_total_item_price|floatformat:2|intcomma }}
-                                {% endif %}
                             </td>
                             <td>
                                 <a href="{% url 'core:remove-from-cart' order_item.item.slug %}"

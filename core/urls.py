@@ -5,10 +5,9 @@ app_name = 'core'
 
 # Admin
 urlpatterns = [
-    # path("dashboard/admin/entity/email/<int:id>/resend/", admin.ResendInviteEmail, name="resend-entity-email"),
     path("", views.indexPage, name="index"),
-    path("cart", views.cartPage, name="cart"),
-    path("shop", views.shopPage, name="shop"),
+    path("cart/", views.cartPage, name="cart"),
+    path("shop/", views.shopPage, name="shop"),
     path("detail/<slug>/", views.detailPage, name="detail"),
 
     path('add-to-cart/<slug>/', views.add_to_cart, name='add-to-cart'),

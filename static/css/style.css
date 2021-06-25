@@ -46,7 +46,14 @@ body{
     margin:0 auto;
 	overflow-x:hidden;
 }
-
+ul.cart-list > li{
+    display: block;
+}
+.attr-nav > ul > li.dropdown ul.dropdown-menu,
+ul.dropdown-menu.cart-list{
+    border:0 !important;
+    overflow: hidden  !important;
+}
 .cart_title{
     font-size: 30px;
     font-weight: 600;
