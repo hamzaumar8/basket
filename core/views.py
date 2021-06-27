@@ -5,6 +5,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.views.generic import View, ListView
 from django.core.exceptions import ObjectDoesNotExist
 from django.utils import timezone
 
@@ -51,16 +52,33 @@ def cartPage(request):
 
 
 
-def shopPage(request):
-
-    obj = models.Item.objects.all()
-    context = {
-        'objects': obj,
-    }
-    return render(request, 'shop.html', context)
 
 
+class shopPage(ListView):
+    model = models.Item
+    context_object_name = 'objects'
+    template_name = 'shop.html'
+    paginate_by = 30
 
+    # def get_context_data(self, **kwargs):
+    #     kwargs['page_title'] = "All Cars"
+    #     kwargs['category_list_nav'] = Category.objects.filter((~Q(title="land")))
+    #     kwargs['category_list'] = Category.objects.all()
+    #     kwargs['brands_list'] = Brand.objects.order_by('-views')[:7]
+    #     kwargs['driving_list'] = School.objects.order_by('-views')[:7]
+    #     kwargs['hotels_list'] = Hotel.objects.order_by('-views')[:7]
+    #     kwargs['realestates_list'] = RealEstate.objects.order_by('-views')[:7]
+
+    #     kwargs['sidefilter'] = self.sidefilter
+    #     kwargs['brands']  = Brand.objects.filter(featured=1).order_by('-id')[:12]
+    #     kwargs['property_list']  = Property.objects.order_by('-id')[:3]
+    #     kwargs['car_count'] = self.sidefilter.qs.count()
+
+    #     return super().get_context_data(**kwargs)
+
+    # def get_queryset(self): 
+    #     self.sidefilter = CarSideFilter(self.request.GET, queryset= self.model.objects.order_by('-id'))
+    #     return self.sidefilter.qs
 
 
 @login_required
