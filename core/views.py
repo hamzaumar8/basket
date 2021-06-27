@@ -60,9 +60,9 @@ class shopPage(ListView):
     template_name = 'shop.html'
     paginate_by = 30
 
-    # def get_context_data(self, **kwargs):
+    def get_context_data(self, **kwargs):
     #     kwargs['page_title'] = "All Cars"
-    #     kwargs['category_list_nav'] = Category.objects.filter((~Q(title="land")))
+        kwargs['categories'] = models.Category.objects.all()
     #     kwargs['category_list'] = Category.objects.all()
     #     kwargs['brands_list'] = Brand.objects.order_by('-views')[:7]
     #     kwargs['driving_list'] = School.objects.order_by('-views')[:7]
@@ -74,7 +74,7 @@ class shopPage(ListView):
     #     kwargs['property_list']  = Property.objects.order_by('-id')[:3]
     #     kwargs['car_count'] = self.sidefilter.qs.count()
 
-    #     return super().get_context_data(**kwargs)
+        return super().get_context_data(**kwargs)
 
     # def get_queryset(self): 
     #     self.sidefilter = CarSideFilter(self.request.GET, queryset= self.model.objects.order_by('-id'))

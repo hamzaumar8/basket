@@ -65,7 +65,7 @@ class Item(models.Model):
     title =  models.CharField(max_length=200)
     price = models.FloatField(null=True, blank=True)
     discount_price = models.FloatField(blank=True, null=True)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, blank=True, related_name='categories')
+    category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, blank=True, related_name='categories')
     description = models.TextField()
     image = models.ImageField(upload_to='item', null=True, blank=True)
     new = models.BooleanField(default=False)
