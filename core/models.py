@@ -54,10 +54,10 @@ class Category(models.Model):
     def __str__(self):
         return self.name
     
-    # def get_category_url(self):
-    #     return reverse("cars:brand", kwargs={
-    #         'slug': self.slug
-    #     })
+    def get_category_url(self):
+        return reverse("core:category", kwargs={
+            'slug': self.slug
+        })
 
 
 #Products 

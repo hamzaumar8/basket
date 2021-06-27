@@ -80,10 +80,10 @@
         <ul class="main-categories">
           {% for category in categories %}
           <li class="main-nav-list">
-            <a data-toggle="collapse" href="">
+            <a href="{{ category.get_category_url }}">
               <!-- <span class="lnr lnr-arrow-right"></span> -->
               {{ category.name }}
-              <!-- <span class="number">(53)</span> -->
+              <span class="number">({{ category.num_cate }})</span>
             </a>
           </li>
           {% endfor %}

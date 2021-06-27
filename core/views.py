@@ -8,6 +8,7 @@ from django.contrib.auth.decorators import login_required
 from django.views.generic import View, ListView
 from django.core.exceptions import ObjectDoesNotExist
 from django.utils import timezone
+from django.db.models import Count, Q
 
 
 from . import models
@@ -62,7 +63,7 @@ class shopPage(ListView):
 
     def get_context_data(self, **kwargs):
     #     kwargs['page_title'] = "All Cars"
-        kwargs['categories'] = models.Category.objects.all()
+        kwargs['categories'] = models.Category.objects.all().annotate(num_cate=Count('categories', distinct=True))
     #     kwargs['category_list'] = Category.objects.all()
     #     kwargs['brands_list'] = Brand.objects.order_by('-views')[:7]
     #     kwargs['driving_list'] = School.objects.order_by('-views')[:7]
@@ -79,6 +80,49 @@ class shopPage(ListView):
     # def get_queryset(self): 
     #     self.sidefilter = CarSideFilter(self.request.GET, queryset= self.model.objects.order_by('-id'))
     #     return self.sidefilter.qs
+
+
+
+
+
+class CategoryListView(ListView):
+    model = models.Item
+    context_object_name = 'objects'
+    template_name = 'shop.html'
+    paginate_by = 30
+
+    def get_context_data(self, **kwargs):
+        kwargs['categories'] = models.Category.objects.all().annotate(num_cate=Count('categories', distinct=True))
+
+        return super().get_context_data(**kwargs)
+
+    def get_queryset(self):
+        category = get_object_or_404(models.Category,  slug=self.kwargs.get('slug'))
+        print(category)
+        self.categoryset = self.model.objects.filter(category=category)
+        return self.categoryset.order_by('-id')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 @login_required
