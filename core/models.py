@@ -46,19 +46,32 @@ def profile_receiver(sender, instance, created, *args, **kwargs):
 post_save.connect(profile_receiver, sender=User)
 
 
+class Category(models.Model):
+    name = models.CharField(unique=True, max_length=200)
+    created_at = models.DateTimeField(auto_now_add=True)
+    slug = AutoSlugField(populate_from='name', unique_with='created_at__month', slugify=custom_slugify )
+
+    def __str__(self):
+        return self.name
+    
+    # def get_category_url(self):
+    #     return reverse("cars:brand", kwargs={
+    #         'slug': self.slug
+    #     })
+
 
 #Products 
 class Item(models.Model):
     title =  models.CharField(max_length=200)
     price = models.FloatField(null=True, blank=True)
     discount_price = models.FloatField(blank=True, null=True)
-    category = models.CharField(max_length=20)
-    slug = AutoSlugField(populate_from='title',unique_with='created_at__month',slugify=custom_slugify)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, blank=True, related_name='categories')
     description = models.TextField()
     image = models.ImageField(upload_to='item', null=True, blank=True)
     new = models.BooleanField(default=False)
     featured = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
+    slug = AutoSlugField(populate_from='title',unique_with='created_at__month',slugify=custom_slugify)
 
     def __str__(self):
         return self.title
