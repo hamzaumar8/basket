@@ -1044,13 +1044,17 @@ span.feature-review {margin-left: 10px;}
 	padding:6em 0;
 }
 .main-agileits {
-    width: 30%;
+    width: 50rem;
     margin: 0em auto ;
-	box-shadow: 0px 0px 15px 0px #D6D6D6;
-	-o-box-shadow: 0px 0px 15px 0px #D6D6D6;
-	-moz-box-shadow: 0px 0px 15px 0px #D6D6D6;
-	-webkit-box-shadow: 0px 0px 15px 0px #D6D6D6;
-	padding: 3em ;
+    padding: 3.5rem;
+    border-radius: calc(2 * .25rem);
+    border-radius: calc(2 * var(--border-radius));
+    background: #fff;
+    -webkit-box-shadow: 0 0.125rem 0.375rem 0 rgb(47 70 98 / 10%);
+    box-shadow: 0 0.125rem 0.375rem 0 rgb(47 70 98 / 10%);
+    -webkit-box-shadow: 0 .125rem .375rem 0 rgba(47, 70, 98, 0.1);
+    box-shadow: 0 .125rem .375rem 0 rgba(47, 70, 98, 0.1);
+}
 }
 
 .key  input[type="text"] ,.key  input[type="password"]{

@@ -117,6 +117,37 @@ class CategoryListView(ListView):
 
 
 
+@login_required
+def form_add_to_cart(request):
+    item_id = request.POST.get('item_id')
+    quantity = request.POST.get('item_quantity')
+    item = get_object_or_404(models.Item, id=item_id)
+    order_item, created = models.OrderItem.objects.get_or_create(
+        item=item,
+        user=request.user,
+        ordered=False
+    )
+    order_qs = models.Order.objects.filter(user=request.user, ordered=False)
+    if order_qs.exists():
+        order = order_qs[0]
+        # check if the order item is in the order
+        if order.items.filter(item__slug=item.slug).exists():
+            order_item.quantity += int(quantity)
+            order_item.save()
+            messages.info(request, "This item quantity was updated.")
+            return redirect("core:cart")
+        else:
+            order.items.add(order_item)
+            order_item.quantity = int(quantity)
+            order_item.save()
+            messages.info(request, "This item was added to your cart.")
+            return redirect("core:cart")
+    else:
+        ordered_date = timezone.now()
+        order = models.Order.objects.create(user=request.user, ordered_date=ordered_date)
+        order.items.add(order_item)
+        messages.info(request, "This item was added to your cart.")
+        return redirect("core:cart")
 
 
 

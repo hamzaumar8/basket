@@ -17,6 +17,38 @@
 
 
 {% block content%}
+
+<style>
+    .product_count {
+        border: 1px solid #ddd;
+        border-radius: 50px;
+        display: flex;
+        align-items: center;
+        padding: 12px 25px;
+        height: 60px;
+        justify-content: space-between;
+        background-color: #fff;
+        width: 150px;
+        margin: 15px 0;
+        font-size: 20px;
+    }
+
+    /* .number-increment,/ */
+    .number-decrement{
+        padding: 5px;
+    font-size: 30px;
+    display: block;
+    }
+.product_count input {
+    border: 0px solid transparent;
+    text-align: center;
+}
+
+ .product_count .input-number {
+    display: inline-block;
+    width: 60px;
+}
+</style>
 <section class="banner-bottom-wthreelayouts py-lg-5 py-3">
     <div class="container">
         <div class="inner-sec-shop pt-lg-4 pt-3">
@@ -39,7 +71,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-7 single-right-left simpleCart_shelfItem">
+                        <div class="col-lg-6 single-right-left simpleCart_shelfItem">
                             <h3>{{ object.title }}</h3>
                             <p><span class="item_price">$ {{ object.price|floatformat:2|intcomma }}</span>
                                 <del>$1,199</del>
@@ -53,22 +85,25 @@
                                     <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
                                 </ul>
                             </div>
-                            <div class="color-quality">
-                                <div class="color-quality-right">
-                                    <h5>Quality :</h5>
-                                    <select id="country1" onchange="change_country(this.value)" class="frm-field required sect">
-                                            <option value="null">5 Qty</option>
-                                            <option value="null">6 Qty</option> 
-                                            <option value="null">7 Qty</option>					
-                                            <option value="null">10 Qty</option>								
-                                        </select>
+                            <form method="Post" action="{% url 'core:form-add-to-cart' %}"> 
+                                {% csrf_token %}
+                                <input type="hidden" name="item_id" value="{{ object.id }}">
+                                
+                                <div class="color-quality">
+                                    <div class="color-quality-right">
+                                        <h5>Quality :</h5>
+                                        <div class="product_count">
+                                            <a href="#" class="number-decrement">-</a>
+                                            <input type="text" name="item_quantity" value="1" class="input-number">
+                                            <a href="#" class="number-increment">+</a>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                          
-                            <a href="{{ object.get_add_to_cart_url }}" class="btn btn-primary btn-md my-0 p">
-                                Add to cart
-                                <i class="fas fa-shopping-cart ml-1"></i>
-                              </a>
+
+                                <button type="submit" class="btn btn-primary btn-md my-0 p"> Add to cart
+                                    <i class="fas fa-shopping-cart ml-1"></i></button>
+                            </form>
+                            
                         </div>
                         <div class="clearfix"> </div>
                         <!--/tabs-->
@@ -610,12 +645,13 @@
             <!--//slider-->
         </div>
 </section>
+
 {% endblock content%}
     
     
 {% block extra_body %}
     <script src="{% static 'js/jquery-ui.js' %}"></script>
-    <script src="{% static 'js/imagezoom.js' %}"></script>
+    <!-- <script src="{% static 'js/imagezoom.js' %}"></script> -->
     <script src="{% static 'js/easy-responsive-tabs.js' %}"></script>
     <script src="{% static 'js/easing.js' %}"></script>
     <script src="{% static 'js/bootstrap.js' %}"></script>
@@ -685,7 +721,11 @@
             $('.flexslider1').flexslider({
                 animation: "slide",
                 controlNav: "thumbnails"
+
             });
+
+
+            
         });
     </script>
     <!-- //FlexSlider-->
@@ -703,6 +743,23 @@
                     $(this).toggleClass('open');
                 }
             );
+
+            $(".number-increment").click(function(e){
+                e.preventDefault()
+                var input_number = $('.input-number').val();
+                input_number++
+                $('.input-number').val(input_number);
+                
+            })
+            $(".number-decrement").click(function(e){
+                e.preventDefault()
+                var input_number = $('.input-number').val();
+                if (input_number <= 1){ input_number = 1 }else{ input_number--; }
+                $('.input-number').val(input_number);
+                
+            })
+
+           
         });
     </script>
     <!-- //dropdown nav -->
