@@ -91,6 +91,13 @@ ul.dropdown-menu.cart-list{
     transition: all 200ms ease;
     box-shadow: 0 2px 8px 0 rgb(0 0 0 / 15%);
 } */
+.card{
+    position: relative;
+    background-color: #fff;
+    padding: 2em;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px 0 rgb(0 0 0 / 15%);
+}
 
 .btn-sm{
     font-size: 14px;
