@@ -1145,7 +1145,7 @@ td strong a {
     color: #0080ff;
 }
 
-aside.right-content .summary.forward {
+ .summary.forward {
     border: 1px solid #faa634;
     background-color: #fff2de;
     width: 100%;
@@ -1156,24 +1156,24 @@ aside.right-content .summary.forward {
     box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%);
 }
 
-aside.right-content .summary .totals {
+ .summary .totals {
     margin-bottom: 15px;
 }
 
-aside.right-content .summary .totals h5 {
+ .summary .totals h5 {
     margin-bottom: 10px;
     font-size: 14px;
 }
 
 
-aside.right-content .summary .totals .item {
+ .summary .totals .item {
     line-height: 18px;
     display: flex;
     justify-content: space-between;
 }
 
 
-aside.right-content .summary .totals .item label {
+ .summary .totals .item label {
     font-size: 13px;
     float: left;
     text-align: left;
@@ -1186,7 +1186,7 @@ aside.right-content .summary .totals .item label {
     color: #2e2e2e;
 }
 
-aside.right-content .summary .totals .item .value {
+ .summary .totals .item .value {
     font-size: 13px;
     float: right;
     text-align: right;
@@ -1195,7 +1195,7 @@ aside.right-content .summary .totals .item .value {
 
 }
 
-aside.right-content .summary .totals .item.total {
+ .summary .totals .item.total {
     margin: 5px 0;
     font-size: 18px;
     padding-top: 10px;

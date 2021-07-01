@@ -88,7 +88,6 @@
                             <form method="Post" action="{% url 'core:form-add-to-cart' %}"> 
                                 {% csrf_token %}
                                 <input type="hidden" name="item_id" value="{{ object.id }}">
-                                
                                 <div class="color-quality">
                                     <div class="color-quality-right">
                                         <h5>Quality :</h5>
@@ -99,7 +98,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <button type="submit" class="btn btn-primary btn-md my-0 p"> Add to cart
                                     <i class="fas fa-shopping-cart ml-1"></i></button>
                             </form>

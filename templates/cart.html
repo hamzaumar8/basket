@@ -8,10 +8,11 @@
 
 <main class="pt-5">
     <div class="container">
-        <h1 class="cart_title">Order Summary <td><a class='btn btn-primary float-right' href='/'>Continue shopping</a>
-            </td>
-        </h1>
-        <div class="row">
+        <h1 class="cart_title">Order Summary 
+            <a class='btn btn-primary float-right' href="{% url 'core:shop' %}">Continue shopping</a>
+    </h1>
+    <a class='btn btn-primary float-right' href="{% url 'core:clear-cart' %}">Clear cart</a>
+    <div class="row">
             <div class="col-md-9 left-content">
                 <table class="bordered centered responsive-table">
                     <thead>
@@ -57,8 +58,6 @@
 
                     </tbody>
                 </table>
-
-
             </div>
             <aside class="col-md-3 right-content">
 
@@ -131,7 +130,7 @@
 
                     </div>
                     <div id="summary-form" class="summary-form" name="summary-form">
-                        <a class="btn btn-warning">Proceed to Checkout</a>
+                        <a href="{% url 'core:checkout' %}" class="btn btn-warning">Proceed to Checkout</a>
                     </div>
                 </div>
 
