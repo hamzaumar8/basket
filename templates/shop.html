@@ -1,4 +1,5 @@
 {% extends 'layout.html' %}
+{% load category_template_tags %}
 {% load humanize %}
 {% load static %}
 
@@ -78,7 +79,7 @@
         <div class="sidebar-categories">
         <div class="head">Browse Categories</div>
         <ul class="main-categories">
-          {% for category in categories %}
+          {% for category in request.user|categories %}
           <li class="main-nav-list">
             <a href="{{ category.get_category_url }}">
               <!-- <span class="lnr lnr-arrow-right"></span> -->

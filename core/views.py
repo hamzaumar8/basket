@@ -70,7 +70,7 @@ class shopPage(ListView):
 
     def get_context_data(self, **kwargs):
     #     kwargs['page_title'] = "All Cars"
-        kwargs['categories'] = models.Category.objects.all().annotate(num_cate=Count('categories', distinct=True))
+        # kwargs['categories'] = models.Category.objects.all().annotate(num_cate=Count('categories', distinct=True))
     #     kwargs['category_list'] = Category.objects.all()
     #     kwargs['brands_list'] = Brand.objects.order_by('-views')[:7]
     #     kwargs['driving_list'] = School.objects.order_by('-views')[:7]
@@ -99,7 +99,7 @@ class CategoryListView(ListView):
     paginate_by = 30
 
     def get_context_data(self, **kwargs):
-        kwargs['categories'] = models.Category.objects.all().annotate(num_cate=Count('categories', distinct=True))
+        # kwargs['categories'] = models.Category.objects.all().annotate(num_cate=Count('categories', distinct=True))
 
         return super().get_context_data(**kwargs)
 

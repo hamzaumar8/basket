@@ -36,8 +36,8 @@
                         <!--/.hm-foot-title-->
                         <div class="hm-foot-menu">
                             <ul>
-                                {% for cate in  request.user|category_list %}
-                                    <li><a href="#">{{ cate.name }}</a></li>
+                                {% for category in  request.user|category_list %}
+                                    <li><a href="{{ category.get_category_url }}">{{ category.name }}</a></li>
                                 {% endfor %}
                                 <!--/li-->
                             </ul>
