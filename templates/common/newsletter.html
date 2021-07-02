@@ -1,4 +1,7 @@
 <!--newsletter strat -->
+{% load cart_template_tags %}
+{% load category_template_tags %}
+
 <section id="newsletter" class="newsletter">
     <div class="container">
         <div class="hm-footer-details">
@@ -11,7 +14,7 @@
                         <!--/.hm-foot-title-->
                         <div class="hm-foot-menu">
                             <ul>
-                                <li><a href="#">about us</a></li>
+                                <li><a href="#">about us  {{ request.user|cart_item_count}}</a></li>
                                 <!--/li-->
                                 <li><a href="#">contact us</a></li>
                                 <!--/li-->
@@ -33,15 +36,9 @@
                         <!--/.hm-foot-title-->
                         <div class="hm-foot-menu">
                             <ul>
-                                <li><a href="#">wooden chair</a></li>
-                                <!--/li-->
-                                <li><a href="#">royal cloth sofa</a></li>
-                                <!--/li-->
-                                <li><a href="#">accent chair</a></li>
-                                <!--/li-->
-                                <li><a href="#">bed</a></li>
-                                <!--/li-->
-                                <li><a href="#">hanging lamp</a></li>
+                                {% for cate in  request.user|category_list %}
+                                    <li><a href="#">{{ cate.name }}</a></li>
+                                {% endfor %}
                                 <!--/li-->
                             </ul>
                             <!--/ul-->
