@@ -12,5 +12,5 @@ def categories(user):
 
 @register.filter
 def category_list(user):
-    categories = Category.objects.all()
+    categories = Category.objects.all().order_by('-id')[:5]
     return categories

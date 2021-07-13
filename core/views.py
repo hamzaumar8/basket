@@ -58,6 +58,15 @@ def cartPage(request):
     # return render(request, 'cart.html')
 
 
+@login_required
+def wishlistPage(request):
+    order = models.Order.objects.get(user=request.user, ordered=False)
+    context = {
+        'object': order
+    }
+    return render(request, 'wishlist.html', context)
+
+
 
 
 
@@ -108,9 +117,6 @@ class CategoryListView(ListView):
         print(category)
         self.categoryset = self.model.objects.filter(category=category)
         return self.categoryset.order_by('-id')
-
-
-
 
 
 
